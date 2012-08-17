@@ -53,7 +53,8 @@ class Serial2WsOptions(usage.Options):
 ##
 class McuProtocol(LineReceiver):
 
-   ## need a reference to our WS-MCU gateway factory to dispatch PubSub events
+   ## need a reference to our WS-MCU gateway factory to 
+   PubSub events
    ##
    def __init__(self, wsMcuFactory):
       self.wsMcuFactory = wsMcuFactory
@@ -87,7 +88,7 @@ class McuProtocol(LineReceiver):
 
          ## publish event to all clients subscribed to topic
          ##
-         self.wsMcuFactory._dispatchEvent("http://example.com/mcu#analog-value", evt)
+         self.wsMcuFactory.dispatch("http://example.com/mcu#analog-value", evt)
 
          log.msg("Analog value: %s" % str(evt));
       except ValueError:
